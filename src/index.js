@@ -1,11 +1,6 @@
 const express = require("express");
 require("./db/mongoose");
 
-// if using dotenv...
-// if (process.env.NODE_ENV !== "production") {
-//     require("dotenv").config();
-// }
-
 const taskRouter = require("./routers/task");
 const userRouter = require("./routers/user");
 

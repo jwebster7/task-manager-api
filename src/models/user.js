@@ -67,7 +67,10 @@ userSchema.virtual("tasks", {
 // methods are available on the instances of a User model.
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET);
+    const token = jwt.sign(
+        { _id: user._id.toString() },
+        process.env.JWT_SECRET
+    );
 
     // add the token to the users tokens array
     user.tokens = user.tokens.concat({ token });
@@ -125,5 +128,8 @@ userSchema.pre("remove", async function (next) {
 
 // built-in schema validators - https://mongoosejs.com/docs/schematypes.html#string-validators
 const User = mongoose.model("User", userSchema);
+
+// mongoose will tell mongodb to create indexes after creating the User model
+User.createIndexes();
 
 module.exports = User;

@@ -34,7 +34,10 @@ router.post("/users", async (req, res) => {
 router.post("/users/login", async (req, res) => {
     try {
         // findByCredentials is defined on the User schema in models
-        const user = await User.findByCredentials(req.body.email, req.body.password);
+        const user = await User.findByCredentials(
+            req.body.email,
+            req.body.password
+        );
         const token = await user.generateAuthToken();
         res.send({ user, token });
     } catch (err) {
@@ -45,7 +48,9 @@ router.post("/users/login", async (req, res) => {
 router.post("/users/logout", auth, async (req, res) => {
     try {
         // only remove the user token supplied from the logout call
-        req.user.tokens = req.user.tokens.filter((token) => token.token !== req.token);
+        req.user.tokens = req.user.tokens.filter(
+            (token) => token.token !== req.token
+        );
         await req.user.save();
         res.send();
     } catch (err) {
@@ -70,7 +75,10 @@ router.post(
     upload.single("avatar"),
     async (req, res) => {
         // standardize all avatar uploads to a 250x250px png
-        const imageBuffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer();
+        const imageBuffer = await sharp(req.file.buffer)
+            .resize({ width: 250, height: 250 })
+            .png()
+            .toBuffer();
         req.user.avatar = imageBuffer;
         await req.user.save();
         res.status(200).send();
@@ -102,7 +110,9 @@ router.get("/users/:id/avatar", async (req, res) => {
 router.patch("/users/me", auth, async (req, res) => {
     const updates = Object.keys(req.body);
     const allowedUpdates = ["name", "email", "password", "age"];
-    const allowedOperation = updates.every((update) => allowedUpdates.includes(update));
+    const allowedOperation = updates.every((update) =>
+        allowedUpdates.includes(update)
+    );
 
     if (!allowedOperation) {
         return res.status(400).send({ error: "Invalid updates!" });

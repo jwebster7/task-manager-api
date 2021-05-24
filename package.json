@@ -1,29 +1,33 @@
 {
-  "name": "task-manager",
-  "version": "1.0.0",
-  "description": "A task manager app",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "devWithDotenv": "nodemon src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
-    "start": "node src/index.js"
-  },
-  "author": "Joe Webster",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.6.6",
-    "mongoose": "^5.12.9",
-    "multer": "^1.4.2",
-    "sharp": "^0.28.2",
-    "validator": "^13.6.0"
-  },
-  "devDependencies": {
-    "dotenv": "^10.0.0",
-    "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.7"
-  }
+    "name": "task-manager",
+    "version": "1.0.0",
+    "description": "A task manager app",
+    "main": "index.js",
+    "scripts": {
+        "test": " env-cmd -f ./config/test.env jest --watch --runInBand --detectOpenHandles",
+        "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+        "start": "node src/index.js"
+    },
+    "jest": {
+        "testEnvironment": "node"
+    },
+    "author": "Joe Webster",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.6.6",
+        "mongoose": "^5.12.9",
+        "multer": "^1.4.2",
+        "sharp": "^0.28.2",
+        "validator": "^13.6.0"
+    },
+    "devDependencies": {
+        "dotenv": "^10.0.0",
+        "env-cmd": "^10.1.0",
+        "jest": "^26.6.3",
+        "nodemon": "^2.0.7",
+        "supertest": "^6.1.3"
+    }
 }

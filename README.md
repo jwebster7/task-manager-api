@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 * Node.js and npm are installed
-* MongoDB is setup locally and access to DB URI and port.
+* MongoDB is setup locally and access to DB URL and port.
 
 ## Getting Started
 1. Clone the project locally using git.
@@ -12,7 +12,7 @@
 ### Setting up the Dev Environment
 1. Start the MongoDB server.
 2. Add a `dev.env` file to the `/config` directory at the top-level of the project.
-3. Set environment variables in `dev.env` for the `PORT`, `MONGODB_URL`, and a secret for `JWT_SECRET` for authentication.
+3. Set environment variables in `dev.env` for the `PORT`, `MONGODB_URL` (include `/DB-NAME-DEV`), and a secret for `JWT_SECRET` for authentication.
 4. Run the command: `npm run dev`.
 
 If all goes well, the Express server should start listening on the `PORT` defined earlier.
@@ -20,5 +20,5 @@ If all goes well, the Express server should start listening on the `PORT` define
 ### Setting up the Test Environment
 1. Start the MongoDB server.
 2. Add a `test.env` file to the `/config` directory at the top-level of the project.
-3. Set environment variables in `test.env` for the `PORT`, `MONGODB_URL`, and a secret for `JWT_SECRET` for authentication.
+3. Set environment variables in `test.env` for the `PORT`, `MONGODB_URL` (include `/DB-NAME-TEST`), and a secret for `JWT_SECRET` for authentication.
 4. Run the command: `npm run test`.
